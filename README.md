@@ -65,14 +65,14 @@ Example:
 
 ```bash
 ./scripts/sync-rules.sh \
-  /base-frontend
+  /frontend
 ```
 
 Example `repos-backend.txt`:
 
 ```text
 # one absolute path per line
-/base-backend
+/backend
 ```
 
 ## Notes

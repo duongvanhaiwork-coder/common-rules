@@ -1,0 +1,29 @@
+---
+description: Operational readiness baseline for reliability, observability, and rollback safety
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Base Operations Rules
+
+## Runtime Reliability
+
+- Define sane timeouts for network and I/O operations.
+- Use retries only with bounded policy and clear stop conditions.
+- Prefer idempotent behavior for retryable commands/jobs.
+
+## Observability Baseline
+
+- Ensure critical flows emit logs with correlation/trace context.
+- Track failures and latency with metrics where practical.
+- Never log secrets or raw sensitive payloads.
+
+## Health And Readiness
+
+- Expose or document health/readiness checks for deployable services.
+- Verify startup configuration errors fail fast and clearly.
+
+## Rollout And Rollback
+
+- For behavior-impacting changes, define rollback steps before release.
+- Document toggles/flags and safe fallback path when applicable.

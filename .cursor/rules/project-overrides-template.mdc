@@ -1,0 +1,20 @@
+---
+description: Template for project-specific overrides extending shared base rules
+alwaysApply: true
+---
+
+# Project Overrides Template
+
+## How To Use
+
+- Copy this file into a target repository at `.cursor/rules/project-overrides.mdc`.
+- Add only project-specific guidance here.
+- Do not duplicate organization-wide rules from shared base files.
+- If any project rule conflicts with shared rules, this project override is authoritative for this repository.
+
+## Recommended Sections
+
+- Architecture constraints specific to this project.
+- Naming conventions specific to this project.
+- Testing requirements specific to this project.
+- Deployment or runtime constraints specific to this project.

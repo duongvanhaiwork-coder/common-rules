@@ -1,0 +1,25 @@
+---
+description: Backend change governance for contracts, migrations, and dependencies
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Backend Change Governance Rules
+
+## API And Contract Changes
+
+- Treat API and event contract changes as compatibility-sensitive by default.
+- Mark breaking changes explicitly and provide migration guidance.
+- Keep contract evolution incremental when feasible.
+
+## Data And Migration Discipline
+
+- Plan database/schema changes with rollout and rollback in mind.
+- Avoid destructive migrations without a safe transition path.
+- Verify migration impact on performance and data integrity.
+
+## Dependency And Configuration
+
+- Add backend dependencies only with clear value and ownership.
+- Keep service configuration in environment/config sources, not hardcoded.
+- Document operational impact of dependency or config changes.

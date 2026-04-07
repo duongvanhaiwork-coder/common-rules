@@ -1,0 +1,31 @@
+---
+description: Backend coding style and implementation conventions
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Backend Style Rules
+
+## Code Organization
+
+- Keep files/modules focused; split large handlers/services by feature or responsibility.
+- Prefer explicit dependency injection over hidden global state.
+- Keep naming consistent with domain language and existing codebase conventions.
+
+## Reliability Patterns
+
+- Use timeouts, retries, and circuit-breaking patterns where external I/O is involved.
+- Fail fast on invalid state; degrade gracefully only where product requirements allow.
+- Design background jobs and consumers to be idempotent.
+
+## Performance Patterns
+
+- Paginate list endpoints and enforce reasonable defaults/limits.
+- Avoid loading large payloads when projections/selective fields are sufficient.
+- Cache only with explicit invalidation strategy and correctness guardrails.
+
+## Migration And Compatibility
+
+- Keep database migrations forward-safe and reversible when practical.
+- Avoid destructive schema changes without rollout/rollback planning.
+- Maintain compatibility windows for public interfaces when possible.

@@ -1,0 +1,25 @@
+---
+description: Backend operational readiness and resilience rules
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Backend Operations Rules
+
+## Reliability
+
+- Define explicit timeout and retry policy for external calls.
+- Ensure retry behavior is bounded and safe for idempotent operations.
+- Add fallback behavior or clear failure handling for critical dependencies.
+
+## Observability
+
+- Emit structured logs with correlation identifiers for request/job flows.
+- Track critical path latency and error-rate metrics.
+- Ensure alertable signals exist for major failure modes.
+
+## Runtime And Release Safety
+
+- Provide health/readiness checks for deployable backend services.
+- Validate startup configuration and fail fast on missing critical settings.
+- For behavior-impacting changes, document rollback procedure.

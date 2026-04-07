@@ -1,0 +1,74 @@
+name: Release Pack
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate pack
+        run: |
+          chmod +x ./scripts/validate-pack.sh
+          ./scripts/validate-pack.sh
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION="$(tr -d '\n' < VERSION)"
+          TAG="pack-v${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: Check tag does not exist
+        run: |
+          if git rev-parse "${{ steps.version.outputs.tag }}" >/dev/null 2>&1; then
+            echo "Tag already exists: ${{ steps.version.outputs.tag }}"
+            exit 1
+          fi
+
+      - name: Create git tag
+        run: |
+          git tag "${{ steps.version.outputs.tag }}"
+          git push origin "${{ steps.version.outputs.tag }}"
+
+      - name: Extract release notes from changelog
+        id: notes
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          NOTES_FILE="$(mktemp)"
+          awk -v v="$VERSION" '
+            BEGIN { in_block=0; found=0 }
+            $0 ~ "^## " v "$" { in_block=1; found=1; next }
+            $0 ~ "^## " && in_block==1 { exit }
+            in_block==1 { print }
+            END {
+              if (found==0) {
+                print "[ERROR] Missing changelog section: ## " v > "/dev/stderr"
+                exit 1
+              }
+            }
+          ' CHANGELOG.md > "$NOTES_FILE"
+
+          if ! grep -q '[^[:space:]]' "$NOTES_FILE"; then
+            echo "[ERROR] Empty changelog notes for version: $VERSION"
+            exit 1
+          fi
+
+          echo "notes_file=$NOTES_FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.version.outputs.tag }}" \
+            --title "Pack ${{ steps.version.outputs.version }}" \
+            --notes-file "${{ steps.notes.outputs.notes_file }}"

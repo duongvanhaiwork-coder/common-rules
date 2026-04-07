@@ -1,0 +1,41 @@
+---
+description: Shared frontend engineering rules for web applications
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Frontend Core Rules
+
+## Scope
+
+- Apply to frontend apps, UI modules, and client-side integrations.
+- Keep project-specific design system and product constraints in overrides.
+
+## Architecture And Composition
+
+- Prefer composition over deep inheritance and large monolithic components.
+- Separate presentation, state orchestration, and API/data access concerns.
+- Keep reusable logic in hooks/composables/utilities with clear contracts.
+
+## Data Flow And API Usage
+
+- Validate and normalize API data at boundaries before use in UI state.
+- Keep API access centralized through project conventions (client layer/service layer).
+- Handle loading, empty, and error states explicitly for async UI flows.
+
+## UX And Accessibility Baseline
+
+- Preserve keyboard navigability and semantic structure in interactive UI.
+- Provide accessible labels and roles for controls and form elements.
+- Keep user-visible feedback clear for success, pending, and failure states.
+
+## Security Baseline
+
+- Never expose secrets in client code or logs.
+- Treat all client-side validation as advisory; rely on server-side enforcement.
+- Sanitize untrusted content before rendering.
+
+## Testing Baseline
+
+- Add or update tests for meaningful logic, state transitions, and critical UI paths.
+- Include regression coverage for fixed bugs when feasible.

@@ -1,0 +1,43 @@
+---
+description: Polyglot coding conventions shared across backend and frontend projects
+alwaysApply: true
+ruleVersion: 1.1.0
+---
+
+# Polyglot Conventions
+
+## Style Source Of Truth
+
+- Use the repository's existing formatter and linter as the primary style authority.
+- Do not manually enforce style that conflicts with configured tooling.
+- Avoid formatting unrelated code; format only touched areas to reduce noisy diffs.
+
+## Shared Code Style Baseline
+
+- Use clear, descriptive names and avoid unclear abbreviations.
+- Keep functions and modules focused on one responsibility.
+- Prefer explicit constants or config over magic literals when practical.
+- Keep comments for non-obvious rationale ("why"), not line-by-line narration ("what").
+- Remove unused imports and dead code in touched files.
+
+## SOLID (Pragmatic Use)
+
+- Apply SOLID to both backend and frontend with practical judgment.
+- Prioritize SRP, ISP, and DIP for modules that evolve frequently or require isolated tests.
+- Apply OCP and LSP when real extension points or polymorphism needs exist.
+- Avoid early abstractions unless they improve maintainability, testability, or decoupling.
+
+## Cross-Cutting Engineering Principles
+
+- Validate external input at boundaries (API, UI form, event, message).
+- Keep module boundaries explicit and avoid circular coupling.
+- Limit shared mutable state.
+- Handle errors intentionally; do not swallow exceptions silently.
+- Log with enough context for debugging, but never log secrets.
+- Never hardcode secrets, tokens, or credentials in source code; use environment or secret managers.
+- Protect backward compatibility for public contracts; clearly flag breaking changes.
+
+## Performance And Reliability
+
+- Optimize based on measurement, not guesswork.
+- Prefer stable, maintainable solutions over premature micro-optimizations.

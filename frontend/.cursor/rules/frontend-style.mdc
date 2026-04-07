@@ -1,0 +1,31 @@
+---
+description: Frontend coding style and UI implementation conventions
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Frontend Style Rules
+
+## Component And State Style
+
+- Keep components focused; extract subcomponents when render logic grows.
+- Co-locate component tests and related styles where project conventions allow.
+- Minimize prop drilling with appropriate composition/context patterns.
+
+## Rendering And Performance
+
+- Avoid unnecessary re-renders by stabilizing derived state and handlers.
+- Use list virtualization or pagination for large datasets.
+- Defer non-critical work and optimize only after measurement.
+
+## Forms And Validation
+
+- Keep form validation rules explicit and consistent.
+- Show actionable validation messages close to the affected field.
+- Prevent duplicate submissions for long-running requests.
+
+## Resilience And Maintainability
+
+- Prefer explicit state transitions over implicit side effects.
+- Keep side effects isolated and cancelable where applicable.
+- Remove dead UI branches and unused style artifacts in touched areas.

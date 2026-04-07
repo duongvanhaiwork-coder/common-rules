@@ -1,0 +1,20 @@
+# Default owner for the whole repository
+* @duongvanhaiwork-coder
+
+# Global shared packs
+/.cursor/rules/ @duongvanhaiwork-coder
+/.cursor/commands/ @duongvanhaiwork-coder
+/.cursor/skills/ @duongvanhaiwork-coder
+
+# Domain packs
+/backend/.cursor/ @duongvanhaiwork-coder
+/frontend/.cursor/ @duongvanhaiwork-coder
+
+# Operational scripts and release metadata
+/scripts/ @duongvanhaiwork-coder
+/VERSION @duongvanhaiwork-coder
+/CHANGELOG.md @duongvanhaiwork-coder
+/pack-manifest.yaml @duongvanhaiwork-coder
+/compatibility-matrix.md @duongvanhaiwork-coder
+/GETTING-STARTED.md @duongvanhaiwork-coder
+/PLAYBOOK.md @duongvanhaiwork-coder

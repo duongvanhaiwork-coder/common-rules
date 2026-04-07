@@ -1,0 +1,29 @@
+---
+description: Change governance baseline for dependency, configuration, and decision traceability
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Base Change Governance Rules
+
+## Dependency Governance
+
+- Add new dependencies only with clear value and maintenance owner.
+- Prefer existing approved libraries over introducing similar new ones.
+- Keep version changes scoped and documented for risk and impact.
+
+## Configuration Discipline
+
+- Keep environment-specific values in config/env, not hardcoded in code.
+- Use safe defaults and explicit required settings for production paths.
+- Validate critical configuration at startup where possible.
+
+## Decision Traceability
+
+- For architectural or contract-impacting changes, record a short decision note.
+- Decision notes should include context, choice, trade-offs, and impact.
+
+## Change Communication
+
+- Explicitly mark breaking changes and required migration steps.
+- Keep release notes focused on user/consumer impact.

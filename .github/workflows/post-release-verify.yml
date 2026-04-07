@@ -1,0 +1,50 @@
+name: Post Release Verify
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: "Profile to verify"
+        required: true
+        default: "backend"
+        type: choice
+        options:
+          - backend
+          - frontend
+          - full
+      repo_list_file:
+        description: "Repo list file path"
+        required: true
+        default: "repos-backend.txt"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate pack
+        run: |
+          chmod +x ./scripts/validate-pack.sh
+          ./scripts/validate-pack.sh
+
+      - name: Run post-release audit
+        run: |
+          chmod +x ./scripts/audit-sync.sh
+          ./scripts/audit-sync.sh --profile "${{ github.event.inputs.profile }}" --from-file "./${{ github.event.inputs.repo_list_file }}"
+
+      - name: Save summary
+        run: |
+          {
+            echo "Post-release verification succeeded."
+            echo "Profile: ${{ github.event.inputs.profile }}"
+            echo "Repo list: ${{ github.event.inputs.repo_list_file }}"
+            echo "Version: $(tr -d '\n' < VERSION)"
+          } > post-release-summary.txt
+
+      - name: Upload summary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-release-summary
+          path: post-release-summary.txt

@@ -1,0 +1,51 @@
+version: 2.9.0
+profiles:
+  global:
+    rules:
+      - base-core.mdc
+      - polyglot-conventions.mdc
+      - base-operations.mdc
+      - base-change-governance.mdc
+      - project-overrides-template.mdc
+    commands:
+      - plan-task.md
+      - implement-task.md
+      - review-changes.md
+      - ship-checklist.md
+      - ops-readiness-check.md
+    skills:
+      - shared-planning-execution/SKILL.md
+      - shared-code-quality/SKILL.md
+      - shared-systematic-debugging/SKILL.md
+      - shared-git-workflow/SKILL.md
+      - shared-auto-commit-assistant/SKILL.md
+      - shared-verification-gate/SKILL.md
+      - shared-security-baseline/SKILL.md
+      - shared-communication-handoff/SKILL.md
+      - shared-docs-change-notes/SKILL.md
+      - shared-operational-readiness/SKILL.md
+      - shared-dependency-config-hygiene/SKILL.md
+  backend:
+    rules:
+      - backend-core.mdc
+      - backend-style.mdc
+      - backend-operations.mdc
+      - backend-change-governance.mdc
+    commands:
+      - backend-implement-api.md
+      - backend-ship-check.md
+    skills:
+      - backend-contract-migration-safety/SKILL.md
+      - backend-reliability-observability/SKILL.md
+  frontend:
+    rules:
+      - frontend-core.mdc
+      - frontend-style.mdc
+      - frontend-operations.mdc
+      - frontend-change-governance.mdc
+    commands:
+      - frontend-implement-ui.md
+      - frontend-ship-check.md
+    skills:
+      - frontend-state-ux-resilience/SKILL.md
+      - frontend-accessibility-performance/SKILL.md

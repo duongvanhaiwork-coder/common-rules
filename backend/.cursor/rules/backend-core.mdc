@@ -1,0 +1,47 @@
+---
+description: Shared backend engineering rules across services and APIs
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Backend Core Rules
+
+## Scope
+
+- Apply to backend services, APIs, workers, and jobs.
+- Keep domain-specific or project-specific constraints in project overrides.
+
+## Architecture And Boundaries
+
+- Separate transport, application logic, and persistence responsibilities.
+- Keep business logic out of controllers/handlers; use service/use-case layers.
+- Depend on interfaces/ports where possible to reduce coupling.
+
+## API And Contract Discipline
+
+- Keep request/response contracts explicit and backward compatible by default.
+- Validate and sanitize all external input at API/message boundaries.
+- For breaking API/schema changes, document impact and migration notes.
+
+## Data And Persistence
+
+- Use transactional boundaries intentionally for multi-step writes.
+- Avoid N+1 queries and unbounded scans on critical paths.
+- Prefer idempotent behavior for retryable operations and jobs.
+
+## Errors And Observability
+
+- Use structured errors with actionable context.
+- Log enough metadata for tracing, but never log secrets or sensitive data.
+- Emit metrics/traces for critical flows and failure paths.
+
+## Security Baseline
+
+- Enforce authn/authz checks at trusted boundaries.
+- Never hardcode secrets, keys, or credentials.
+- Apply least-privilege access for data stores and external integrations.
+
+## Testing Baseline
+
+- Add or update unit/integration tests for meaningful logic changes.
+- Verify contract changes with tests or schema checks.

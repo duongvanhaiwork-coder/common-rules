@@ -1,0 +1,42 @@
+---
+description: Organization-wide core engineering and collaboration rules
+alwaysApply: true
+ruleVersion: 1.1.0
+---
+
+# Base Core Rules
+
+## Scope
+
+- These are default rules for all projects.
+- Keep project-specific architecture or stack details in separate override rules.
+- If a project-specific rule conflicts with a shared rule, the project override takes precedence.
+
+## Safety And Boundaries
+
+- Do not run destructive commands unless explicitly requested.
+- Do not change files outside the requested scope.
+- Preserve existing behavior unless the task requires behavior changes.
+
+## Change Quality
+
+- Prefer minimal, focused changes over broad refactors.
+- Keep code consistent with existing style and patterns in the current repo.
+- Avoid adding dependencies unless they provide clear value.
+
+## Verification
+
+- Run appropriate checks after meaningful edits (lint, tests, or build as available).
+- If full verification is not possible, clearly state what was not run and how to run it.
+- For important logic changes, add or update tests when feasible, not only run existing checks.
+
+## Git And Delivery
+
+- Do not commit or push unless explicitly requested.
+- When asked to commit, use concise messages that explain intent.
+
+## Communication
+
+- Report what changed, why it changed, and where it changed.
+- Call out any risks, assumptions, and follow-up actions.
+- Explicitly note behavior changes and breaking changes in the final summary.

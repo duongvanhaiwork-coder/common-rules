@@ -1,0 +1,25 @@
+---
+description: Frontend operational readiness for UX resilience and runtime safety
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Frontend Operations Rules
+
+## UX Resilience
+
+- Ensure async user flows handle loading, empty, and error states.
+- Prevent duplicate user actions on long-running requests.
+- Provide graceful degradation for partial feature/runtime failures.
+
+## Client Observability
+
+- Capture client-side errors with enough context for diagnosis.
+- Track critical interaction latency and failure hotspots when possible.
+- Avoid logging sensitive user data in browser logs or telemetry.
+
+## Delivery Safety
+
+- Validate runtime configuration availability before critical feature usage.
+- Document fallback behavior for unavailable APIs or degraded network.
+- For behavior-impacting changes, define rollback or feature-flag strategy.

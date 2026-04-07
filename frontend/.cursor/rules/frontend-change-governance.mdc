@@ -1,0 +1,25 @@
+---
+description: Frontend change governance for UI contracts, dependencies, and configuration
+alwaysApply: true
+ruleVersion: 1.0.0
+---
+
+# Frontend Change Governance Rules
+
+## UI And Contract Compatibility
+
+- Treat UI behavior and API consumption changes as compatibility-sensitive.
+- Mark breaking UX or contract changes and provide transition notes.
+- Keep changes incremental to reduce user-facing disruption.
+
+## Dependency Governance
+
+- Add frontend dependencies only when existing stack cannot solve the need.
+- Evaluate bundle-size and maintenance impact before adoption.
+- Document risk and rollback notes for major dependency changes.
+
+## Configuration Discipline
+
+- Keep environment-specific values in config/env, not hardcoded.
+- Use safe defaults when runtime config is unavailable.
+- Document feature flags and rollout strategy for risky behavior changes.
